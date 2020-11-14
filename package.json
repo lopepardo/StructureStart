@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "scss": "node-sass --output-style compressed -o dist/css src/scss/styles.scss",
+    "scss": "node-sass --output-style compressed -o dist/css src/scss",
     "autoprefixer": "postcss -u autoprefixer -r dist/css/*",
     "lint-js": "eslint src/js",
     "lint-scss": "stylelint src/scss/*.scss --syntax scss || true",
@@ -12,10 +12,10 @@
     "imagemin": "imagemin src/images dist/images -p",
     "icons": "svgo -f src/images/icons && mkdir -p dist/images && svg-sprite-generate -d src/images/icons -o dist/images/icons.svg",
     "serve": "browser-sync start --server --files 'dist/css/*.css, dist/js/*.js'",
+    "build": "run-s build:css build:js",
     "build:css": "run-s lint-scss scss",
     "build:js": "run-s lint-js uglify",
     "build:images": "run-s imagemin icons",
-    "build:all": "npm run build:css && npm run build:js && npm run build:images",
     "watch:css": "onchange 'src/scss/*.scss' -- npm run build:css",
     "watch:js": "onchange 'src/js/*.js' -- npm run build:js",
     "start": "run-p serve watch:css watch:js"
