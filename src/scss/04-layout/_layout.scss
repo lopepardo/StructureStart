@@ -8,13 +8,9 @@
 
 .l-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  margin-left: 1.3rem;
-  margin-right: 1.3rem;
+  grid-template-columns: 2rem 1fr 2rem;
 
   @include media($min-lg) {
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
+    grid-template-columns: 1fr 1100px 1fr;
   }
 }
